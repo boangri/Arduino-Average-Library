@@ -15,7 +15,7 @@ Average::Average()
 }
 
 
-void putValue(float value)
+void Average::putValue(float value)
 {
 	_values[_ind] = value;
 	_ind++;
@@ -24,7 +24,7 @@ void putValue(float value)
 	_calc = true;
 }
 
-float getAverage();
+float Average::getAverage()
 {
 	if (_calc) {
 		float fn = (float)_n;
@@ -40,25 +40,8 @@ float getAverage();
 	return _avg;
 }
 
-float getSigma()
+float Average::getSigma()
 {
 	if(_calc) getAverage();
 	return _sigma;
-}
-
-
-unsigned short CRC16::crc(byte* data, unsigned short cnt)
-{
-	byte uchCRCHi = 0xFF;  /* high CRC byte initialized */
-	byte uchCRCLo = 0xFF;  /* low CRC byte initialized  */ 
-	unsigned uIndex;       /* will index into CRC lookup*/ 
-						   /* table                  */ 
-	while (cnt--)          /* pass through message buffer */ 
-	{
-		uIndex = uchCRCHi ^ *data++; /* calculate the CRC */ 
-		uchCRCHi = uchCRCLo ^ auchCRCHi[uIndex];
-		uchCRCLo = auchCRCLo[uIndex];
-	}
-
-	return (uchCRCLo << 8 | uchCRCHi);
 }
