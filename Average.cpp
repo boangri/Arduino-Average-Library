@@ -7,7 +7,7 @@
 #include "Arduino.h"
 #include "Average.h"
 
-Average::Average()
+Average::Average(int n)
 {
 	_ind = 0;
 	_n = 0;

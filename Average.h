@@ -13,7 +13,7 @@
 class Average
 {
     public:
-		Average();
+		Average(int n);
 		void putValue(float value);
 		float getAverage();
 		float getSigma();
