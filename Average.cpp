@@ -10,7 +10,12 @@
 Average::Average(int n)
 {
 	_ind = 0;
-	_n = 0;
+	_i = 0;
+	if (n < 100) {
+		_n = n;
+	} else {
+		_n = N_AVG;
+	}
 	_calc = true; // new calulation is necessary
 }
 
@@ -19,15 +24,15 @@ void Average::putValue(float value)
 {
 	_values[_ind] = value;
 	_ind++;
-	_ind %= N_AVG;
-	if (_n < N_AVG) _n++;
+	_ind %= _n;
+	if (_i < _n) _i++;
 	_calc = true;
 }
 
 float Average::getAverage()
 {
 	if (_calc) {
-		float fn = (float)_n;
+		float fn = (float)_i;
 		for(int j = 0; j < _n; j++) {
 			_avg += _values[j];
 			_sigma += _values[j]*_values[j];
@@ -42,6 +47,6 @@ float Average::getAverage()
 
 float Average::getSigma()
 {
-	if(_calc) getAverage();
+	if(_calc) Average::getAverage();
 	return _sigma;
 }

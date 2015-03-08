@@ -19,8 +19,9 @@ class Average
 		float getSigma();
     private:
 		float _values[N_AVG];
-		int _ind;
-		int _n;
+		int _i; // number of measured values
+		int _ind; // current index (pointer in array)
+		int _n;  // size of array
 		bool _calc;
 		float _avg;
 		float _sigma;
