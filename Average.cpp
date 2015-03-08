@@ -11,42 +11,42 @@ Average::Average(int n)
 {
 	_ind = 0;
 	_i = 0;
-	if (n < 100) {
+	_summa = 0.;
+	_summa2 = 0.;
+	if (n < N_AVG) {
 		_n = n;
 	} else {
 		_n = N_AVG;
 	}
-	_calc = true; // new calulation is necessary
 }
 
 
 void Average::putValue(float value)
 {
+	if (_i < _n) {
+		_i++;
+		_fi = (float)_i;
+	} 
+	if (_i == _n) {
+		_summa -= _values[_ind];
+		_summa2 -= _values[_ind]*_values[_ind];
+	}
 	_values[_ind] = value;
 	_ind++;
 	_ind %= _n;
-	if (_i < _n) _i++;
-	_calc = true;
+	_summa += value;
+	_summa2 += value*value;
 }
 
 float Average::getAverage()
 {
-	if (_calc) {
-		float fn = (float)_i;
-		for(int j = 0; j < _n; j++) {
-			_avg += _values[j];
-			_sigma += _values[j]*_values[j];
-		}
-		_avg /= fn;
-		_sigma /= fn;
-		_sigma = sqrt((_sigma - _avg*_avg)/fn);
-	}
-	_calc = false;
-	return _avg;
+	return _summa/_fi;
 }
 
 float Average::getSigma()
 {
-	if(_calc) Average::getAverage();
-	return _sigma;
+	float avg;
+	
+	avg = _summa/_fi;
+	return sqrt((_summa2/_fi - avg*avg)/_fi);
 }
