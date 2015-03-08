@@ -22,9 +22,9 @@ class Average
 		int _i; // number of measured values
 		int _ind; // current index (pointer in array)
 		int _n;  // size of array
-		bool _calc;
-		float _avg;
-		float _sigma;
+		float _fi;
+		float _summa;
+		float _summa2;
 };
 
 #endif
