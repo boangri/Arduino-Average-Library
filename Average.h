@@ -6,7 +6,7 @@
 */
 #ifndef AVERAGE_H
 #define AVERAGE_H
-#define N_AVG 100
+#define N_AVG 64
 
 #include "Arduino.h"
 
@@ -17,14 +17,17 @@ class Average
 		void putValue(float value);
 		float getAverage();
 		float getSigma();
+		void reset();
+		
     private:
 		float _values[N_AVG];
 		int _i; // number of measured values
 		int _ind; // current index (pointer in array)
 		int _n;  // size of array
-		float _fi;
-		float _summa;
-		float _summa2;
+		float _average;
+		float _sigma;
+		boolean _valid;
+		void calc();
 };
 
 #endif

@@ -15,6 +15,7 @@ Average	KEYWORD1
 putValue	KEYWORD2
 getAverage	KEYWORD2
 getSigma	KEYWORD2
+reset   	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

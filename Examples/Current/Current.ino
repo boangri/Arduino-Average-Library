@@ -1,8 +1,10 @@
 #include <Average.h>
 
-Average sensor();
+#define N 10
+
+Average sensor(N);
 int pin = A1;
-int n;
+long n;
 
 void setup() 
 {
@@ -19,12 +21,12 @@ void loop()
     current = (value - 510.5)*0.41/12;
     sensor.putValue(current);
     n++;
-    if ((n % N_AVG) == 0) {
+    if ((n % N) == 0) {
       current = sensor.getAverage();
       sigma = sensor.getSigma();
       Serial.print(current);
       Serial.print(" ");
       Serial.println(sigma);
     }
-    delay(1); 
-}  
+    delay(20); 
+} 
