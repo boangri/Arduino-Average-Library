@@ -6,7 +6,7 @@
 */
 #ifndef AVERAGE_H
 #define AVERAGE_H
-#define N_AVG 64
+#define N_AVG 16
 
 #include "Arduino.h"
 
